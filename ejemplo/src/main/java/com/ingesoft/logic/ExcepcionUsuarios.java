@@ -1,15 +1,20 @@
 package com.ingesoft.logic;
 
-public class ExcepcionUsuarios extends Exception{
-    public ExcepcionUsuarios(){
+public class ExcepcionUsuarios extends Exception {
+
+    public ExcepcionUsuarios() {
         super();
     }
-
-    public ExcepcionUsuarios(String message){
+    
+    public ExcepcionUsuarios(String message) {
         super(message);
     }
 
-    public ExcepcionUsuarios(String message, Throwable cause){
+    public ExcepcionUsuarios(String message, Throwable cause) {
         super(message, cause);
+    }
+    
+     public ExcepcionUsuarios(Throwable causa) {
+        super(causa);
     }
 }
