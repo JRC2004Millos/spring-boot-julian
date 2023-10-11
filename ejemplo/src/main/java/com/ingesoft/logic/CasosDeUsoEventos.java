@@ -2,8 +2,11 @@ package com.ingesoft.logic;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
+
+import com.ingesoft.domain.Evento;
 
 @Service
 public class CasosDeUsoEventos {

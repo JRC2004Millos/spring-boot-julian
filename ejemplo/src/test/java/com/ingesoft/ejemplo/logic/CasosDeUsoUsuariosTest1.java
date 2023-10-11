@@ -1,5 +1,14 @@
-import static org.junit.Assert.*;
-import org.junit.Test;
+package com.ingesoft.ejemplo.logic;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test; // Asegúrate de importar la anotación @Test desde el paquete correcto
+
+
+import com.ingesoft.logic.CasosDeUsoUsuarios;
+
+import com.ingesoft.logic.ExcepcionUsuarios;
 
 public class CasosDeUsoUsuariosTest1 {
 
@@ -12,27 +21,32 @@ public class CasosDeUsoUsuariosTest1 {
         casosDeUso.iniciarSesion("usuario1", "password123");
 
         // Verifica que la sesión se haya iniciado correctamente
-      
     }
 
-    @Test(expected = ExcepcionUsuarios.class)
-    public void testIniciarSesionUsuarioNoRegistrado() throws ExcepcionUsuarios {
+    @Test
+    public void testIniciarSesionUsuarioNoRegistrado() {
         CasosDeUsoUsuarios casosDeUso = new CasosDeUsoUsuarios();
 
         // Prueba 2: Intentar iniciar sesión con un usuario no registrado
-        casosDeUso.iniciarSesion("usuario2", "password456");
+        ExcepcionUsuarios excepcion = assertThrows(ExcepcionUsuarios.class, () -> {
+            casosDeUso.iniciarSesion("usuario2", "password456");
+        });
 
-        // Debería lanzar una excepción ExcepcionUsuarios
+        // Puedes realizar más verificaciones sobre la excepción si es necesario
+        assertThat(excepcion.getMessage()).isEqualTo("El usuario no está registrado");
     }
 
-    @Test(expected = ExcepcionUsuarios.class)
+    @Test
     public void testIniciarSesionPasswordIncorrecto() throws ExcepcionUsuarios {
         CasosDeUsoUsuarios casosDeUso = new CasosDeUsoUsuarios();
 
         // Prueba 3: Intentar iniciar sesión con contraseña incorrecta
         casosDeUso.registrarUsuario("usuario3", "password123", "NombreUsuario");
-        casosDeUso.iniciarSesion("usuario3", "contraseñaIncorrecta");
+        ExcepcionUsuarios excepcion = assertThrows(ExcepcionUsuarios.class, () -> {
+            casosDeUso.iniciarSesion("usuario3", "contraseñaIncorrecta");
+        });
 
-        // Debería lanzar una excepción ExcepcionUsuarios
+        // Puedes realizar más verificaciones sobre la excepción si es necesario
+        assertThat(excepcion.getMessage()).isEqualTo("Las contraseñas no coinciden");
     }
 }

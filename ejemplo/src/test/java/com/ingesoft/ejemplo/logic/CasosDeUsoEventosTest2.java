@@ -1,5 +1,18 @@
-import static org.junit.Assert.*;
-import org.junit.Test;
+package com.ingesoft.ejemplo.logic;
+
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+
+import com.ingesoft.domain.Evento;
+import com.ingesoft.logic.CasosDeUsoEventos;
+import com.ingesoft.logic.ExcepcionEventos;
 
 public class CasosDeUsoEventosTest2 {
 
@@ -21,13 +34,14 @@ public class CasosDeUsoEventosTest2 {
         
     }
 
-    @Test(expected = ExcepcionEventos.class)
-    public void testExplorarEventoNoEncontrado() throws ExcepcionEventos {
+    @Test
+    public void testExplorarEventoNoEncontrado() {
         CasosDeUsoEventos casosDeUso = new CasosDeUsoEventos();
 
         // Prueba 2: Intentar explorar eventos con un nombre que no existe
-        casosDeUso.explorarEvento("NombreNoExistente");
-
+        Executable executable = () -> casosDeUso.explorarEvento("NombreNoExistente");
+        
         // Debería lanzar una excepción ExcepcionEventos
+        assertThrows(ExcepcionEventos.class, executable);
     }
 }

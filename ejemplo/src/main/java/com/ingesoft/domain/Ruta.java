@@ -30,44 +30,5 @@ public class Ruta {
         this.tiempo = tiempo;
     }
 
-    // Getters y setters
-    public Long getIdRuta() {
-        return idRuta;
-    }
-
-    public void setIdRuta(Long idRuta) {
-        this.idRuta = idRuta;
-    }
-
-    public double getDistancia() {
-        return distancia;
-    }
-
-    public void setDistancia(double distancia) {
-        this.distancia = distancia;
-    }
-
-    public String getOrigen() {
-        return origen;
-    }
-
-    public void setOrigen(String origen) {
-        this.origen = origen;
-    }
-
-    public String getDestino() {
-        return destino;
-    }
-
-    public void setDestino(String destino) {
-        this.destino = destino;
-    }
-
-    public double getTiempo() {
-        return tiempo;
-    }
-
-    public void setTiempo(double tiempo) {
-        this.tiempo = tiempo;
-    }
+    
 }

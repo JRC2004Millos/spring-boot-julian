@@ -3,16 +3,16 @@ package com.ingesoft.logic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ingesoft.data.RepositorioUsuarios;
+import com.ingesoft.data.RepositorioUsuario;
 import com.ingesoft.domain.Usuario;
 
 @Service
 public class CasosDeUsoUsuarios {
 
     @Autowired
-    RepositorioUsuarios usuarios;
+    RepositorioUsuario usuarios;
 
-    public void registrarUsuario(String nombre, String contraseña) throws ExcepcionUsuarios {
+    public void registrarUsuario(String nombre, String contraseña, String string) throws ExcepcionUsuarios {
         // Paso 2: Verificar que el nombre ingresado no exista en la base de datos
         if (usuarios.findByLogin(nombre).size() > 0) {
             throw new ExcepcionUsuarios("El nombre ya está tomado");
@@ -27,7 +27,7 @@ public class CasosDeUsoUsuarios {
         // (Suponemos que el usuario vuelve a ingresar la contraseña manualmente)
 
         // Paso 6: Verificar que las contraseñas coincidan
-        if (!contraseña.equals(confirmarContraseña)) {
+        if (!contraseña.equals(contraseña)) {
             throw new ExcepcionUsuarios("Las contraseñas no coinciden");
         }
 

@@ -5,6 +5,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class CasosDeUsoRutas {
 
+    /**
+     * @param lugarPartida
+     * @param lugarDestino
+     * @param fechaHoraPartida
+     * @throws ExcepcionRutas
+     */
     public void planificarRutas(String lugarPartida, String lugarDestino, String fechaHoraPartida) throws ExcepcionRutas {
         // Paso 4: Verificar que el lugar de partida exista en el mapa
         if (!lugarExisteEnMapa(lugarPartida)) {
@@ -20,13 +26,6 @@ public class CasosDeUsoRutas {
 
        
     }
-
-    private boolean lugarExisteEnMapa(String lugar) {
-        // Lógica para verificar si un lugar existe en el mapa
-        
-        return false; 
-    }
-
 
 
 

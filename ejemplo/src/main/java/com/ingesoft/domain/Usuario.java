@@ -26,28 +26,14 @@ public class Usuario {
         this.clave = clave;
     }
 
-    // Getters y setters
-    public Long getId() {
-        return id;
+    public void setPassword(String contraseña) {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setLogin(String nombre2) {
     }
 
-    public String getNombre() {
-        return nombre;
+    public Object getPassword() {
+        return null;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getClave() {
-        return clave;
-    }
-
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
 }

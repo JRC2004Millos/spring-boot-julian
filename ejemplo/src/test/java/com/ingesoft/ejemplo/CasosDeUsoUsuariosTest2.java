@@ -1,5 +1,14 @@
-import static org.junit.Assert.*;
-import org.junit.Test;
+package com.ingesoft.ejemplo;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+
+
+import com.ingesoft.logic.CasosDeUsoUsuarios;
+
+import com.ingesoft.logic.ExcepcionUsuarios;
 
 public class CasosDeUsoUsuariosTest2 {
 
@@ -11,26 +20,31 @@ public class CasosDeUsoUsuariosTest2 {
         casosDeUso.registrarUsuario("usuario1", "password123", "NombreUsuario");
         
         // Verifica que el usuario se haya registrado correctamente
-        
     }
 
-    @Test(expected = ExcepcionUsuarios.class)
-    public void testRegistrarUsuarioExistente() throws ExcepcionUsuarios {
+    @Test
+    public void testRegistrarUsuarioExistente() {
         CasosDeUsoUsuarios casosDeUso = new CasosDeUsoUsuarios();
 
         // Prueba 2: Intentar registrar un usuario con un nombre de usuario existente
-        casosDeUso.registrarUsuario("usuario1", "password123", "NombreUsuario");
+        ExcepcionUsuarios excepcion = assertThrows(ExcepcionUsuarios.class, () -> {
+            casosDeUso.registrarUsuario("usuario1", "password123", "NombreUsuario");
+        });
 
-        // Debería lanzar una excepción ExcepcionUsuarios
+        // Puedes realizar más verificaciones sobre la excepción si es necesario
+        assertThat(excepcion.getMessage()).isEqualTo("El usuario ya está registrado");
     }
 
-    @Test(expected = ExcepcionUsuarios.class)
-    public void testRegistrarUsuarioPasswordCorto() throws ExcepcionUsuarios {
+    @Test
+    public void testRegistrarUsuarioPasswordCorto() {
         CasosDeUsoUsuarios casosDeUso = new CasosDeUsoUsuarios();
 
         // Prueba 3: Intentar registrar un usuario con una contraseña demasiado corta
-        casosDeUso.registrarUsuario("usuario2", "pass", "NombreUsuario");
+        ExcepcionUsuarios excepcion = assertThrows(ExcepcionUsuarios.class, () -> {
+            casosDeUso.registrarUsuario("usuario2", "pass", "NombreUsuario");
+        });
 
-        // Debería lanzar una excepción ExcepcionUsuarios
+        // Puedes realizar más verificaciones sobre la excepción si es necesario
+        assertThat(excepcion.getMessage()).isEqualTo("La contraseña es demasiado corta");
     }
 }

@@ -1,5 +1,12 @@
-import static org.junit.Assert.*;
-import org.junit.Test;
+package com.ingesoft.ejemplo.logic;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+
+import com.ingesoft.logic.CasosDeUsoEventos;
+import com.ingesoft.logic.ExcepcionEventos;
 
 public class CasosDeUsoEventosTest1 {
 
@@ -11,26 +18,32 @@ public class CasosDeUsoEventosTest1 {
         casosDeUso.crearEvento("NombreEvento1", "FechaEvento1");
 
         // Verifica que el evento se haya creado correctamente
-        
+        // Puedes agregar aserciones adicionales aquí
     }
 
-    @Test(expected = ExcepcionEventos.class)
-    public void testCrearEventoNombreVacio() throws ExcepcionEventos {
+    @Test
+    public void testCrearEventoNombreVacio() {
         CasosDeUsoEventos casosDeUso = new CasosDeUsoEventos();
 
         // Prueba 2: Intentar crear un evento con nombre vacío
-        casosDeUso.crearEvento("", "FechaEvento2");
+        Exception exception = assertThrows(ExcepcionEventos.class, () -> {
+            casosDeUso.crearEvento("", "FechaEvento2");
+        });
 
-        // Debería lanzar una excepción ExcepcionEventos
+        // Verifica que la excepción sea de tipo ExcepcionEventos
+        assertThat(exception).isInstanceOf(ExcepcionEventos.class);
     }
 
-    @Test(expected = ExcepcionEventos.class)
-    public void testCrearEventoFechaInvalida() throws ExcepcionEventos {
+    @Test
+    public void testCrearEventoFechaInvalida() {
         CasosDeUsoEventos casosDeUso = new CasosDeUsoEventos();
 
         // Prueba 3: Intentar crear un evento con una fecha inválida
-        casosDeUso.crearEvento("NombreEvento3", "FechaInvalida");
+        Exception exception = assertThrows(ExcepcionEventos.class, () -> {
+            casosDeUso.crearEvento("NombreEvento3", "FechaInvalida");
+        });
 
-        // Debería lanzar una excepción ExcepcionEventos
+        // Verifica que la excepción sea de tipo ExcepcionEventos
+        assertThat(exception).isInstanceOf(ExcepcionEventos.class);
     }
 }

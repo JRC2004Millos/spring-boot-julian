@@ -14,7 +14,7 @@ public class Administrador {
     private Long id;
 
     private String nombre;
-    private String clave;
+    private String password;
 
     // Constructor vacío
     public Administrador() {
@@ -23,31 +23,8 @@ public class Administrador {
     // Constructor con nombre y clave
     public Administrador(String nombre, String clave) {
         this.nombre = nombre;
-        this.clave = clave;
+        
     }
 
-    // Getters y setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getClave() {
-        return clave;
-    }
-
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
+    
 }
