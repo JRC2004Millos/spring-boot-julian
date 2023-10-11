@@ -1,3 +1,4 @@
+---
 # Gitpod Configuration
 # ver: https://www.gitpod.io/docs/introduction/learn-gitpod/gitpod-yaml
 
@@ -12,11 +13,17 @@ tasks:
 
   - name: Compila proyecto sin ejecutar pruebas
     before: |
-      sdk default java 17.0.7.fx-zulu
+      sdk default java 17.0.8.fx-zulu
     init: ./mvnw package -DskipTests 
 
 # Extensiones
 vscode:
   extensions:
-    - pivotal.vscode-spring-boot
-    - vscjava.vscode-java-pack
+    - vscjava.vscode-java-debug
+    - redhat.java@1.21.0
+    - vscjava.vscode-maven
+    - vscjava.vscode-java-dependency
+    - vscjava.vscode-spring-boot-dashboard
+    - vmware.vscode-spring-boot
+    - vscjava.vscode-spring-initializr
+    - vscjava.vscode-java-test
