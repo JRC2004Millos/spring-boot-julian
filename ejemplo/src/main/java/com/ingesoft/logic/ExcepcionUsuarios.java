@@ -13,8 +13,5 @@ public class ExcepcionUsuarios extends Exception {
     public ExcepcionUsuarios(String message, Throwable cause) {
         super(message, cause);
     }
-    
-     public ExcepcionUsuarios(Throwable causa) {
-        super(causa);
-    }
+
 }
