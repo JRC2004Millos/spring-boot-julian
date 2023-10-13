@@ -1,27 +1,17 @@
 package com.ingesoft.domain;
 
-
-
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
 @Entity
-public class Bicicleta {
-    
+public class Marca {
+
     @Id
     @GeneratedValue
     Long id;
 
-    String descripcion;
-
-    @ManyToOne
-    Usuario usuario;
-
+    String nombre;
 }
-

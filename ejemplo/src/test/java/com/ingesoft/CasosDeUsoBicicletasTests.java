@@ -18,6 +18,8 @@ import com.ingesoft.domain.Bicicleta;
 import com.ingesoft.domain.Usuario;
 import com.ingesoft.logic.CasosDeUsoBicicletas;
 
+import jakarta.transaction.Transactional;
+
 
 @SpringBootTest
 public class CasosDeUsoBicicletasTests {
@@ -57,6 +59,7 @@ public class CasosDeUsoBicicletasTests {
 
     // CU2: Registrar Bicicleta
     @Test
+    @Transactional
     public void registrarBicicletaSinErrores() {
         try {
             // Arrange
@@ -66,8 +69,9 @@ public class CasosDeUsoBicicletasTests {
             casosDeUsoBicicletas.registrarBicicleta(usuario.getLogin(), "Mi Bicicleta");
 
             // Assert
-            List<Bicicleta> bicicletasDelUsuario = bicicletas.findByUsuario(usuario);
+            List<Bicicleta> bicicletasDelUsuario = bicicletas.findByUsuario(usuario.getId());
             assertThat(bicicletasDelUsuario).isNotEmpty();
+
         } catch (Exception e) {
             fail("Se generó un error y no debería", e);
         }

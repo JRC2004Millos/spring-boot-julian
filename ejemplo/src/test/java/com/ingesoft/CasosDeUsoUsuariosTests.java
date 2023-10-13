@@ -1,7 +1,5 @@
 package com.ingesoft;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterAll;
@@ -12,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.ingesoft.data.RepositorioBicicletas;
 import com.ingesoft.data.RepositorioUsuarios;
 import com.ingesoft.domain.Usuario;
 import com.ingesoft.logic.CasosDeUsoUsuarios;
@@ -28,6 +27,8 @@ public class CasosDeUsoUsuariosTests {
     @Autowired
     RepositorioUsuarios usuarios;
 
+    @Autowired
+    RepositorioBicicletas bicicletas;
 
     // Arrange
     // -------
@@ -42,6 +43,7 @@ public class CasosDeUsoUsuariosTests {
         System.out.println("Antes de cada pruebas");
         System.out.println();
 
+        bicicletas.deleteAll();
         usuarios.deleteAll();
 
         Usuario u = new Usuario();
@@ -70,8 +72,8 @@ public class CasosDeUsoUsuariosTests {
                 "Juan El mejor");
 
             // Assert
-            List<Usuario> usuariosConNombreJuan = usuarios.findByLogin("juan");
-            if (usuariosConNombreJuan.size() == 0) {
+            Usuario usuariosConNombreJuan = usuarios.findByLogin("juan");
+            if (usuariosConNombreJuan == null) {
                 // mal !!
                 fail("No se grabó el usuario");
             }

@@ -1,7 +1,5 @@
 package com.ingesoft.logic;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +20,10 @@ public class CasosDeUsoUsuarios {
     ) throws ExcepcionUsuarios {
 
         // 2. Sistema valida que no exista otro usuario con ese login
-        List<Usuario> usuariosExistentes = usuarios.findByLogin(login);
+        Usuario usuariosExistentes = usuarios.findByLogin(login);
 
         // (2) Cuando existe otro usuario con ese login
-        if (usuariosExistentes.size() > 0 ) {
+        if (usuariosExistentes != null) {
             // 2.1. Sistema muestra un mensaje "Existe otro usuario con ese login"
             // 2.2. Sistema termina
             throw new ExcepcionUsuarios("Existe otro usuario con ese login");

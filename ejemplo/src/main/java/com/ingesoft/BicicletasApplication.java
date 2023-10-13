@@ -1,4 +1,4 @@
-package com.ingesoft.logic;
+package com.ingesoft;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
