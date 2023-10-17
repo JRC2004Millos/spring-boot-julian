@@ -22,6 +22,10 @@ public class Bicicleta {
 
     @ManyToOne
     Usuario usuario;
+    @ManyToOne
+    Marca marca;
+    @ManyToOne
+    Accesorio accesorio;
 
 }
 
