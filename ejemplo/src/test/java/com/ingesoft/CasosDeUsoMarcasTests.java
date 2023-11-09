@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -16,6 +17,7 @@ import com.ingesoft.logic.CasosDeUsoMarcas;
 import com.ingesoft.logic.ExcepcionMarcas;
 
 @SpringBootTest
+@Tag("integration")
 public class CasosDeUsoMarcasTests {
 
     // SUT -- Subject under test
@@ -47,6 +49,7 @@ public class CasosDeUsoMarcasTests {
 
     // Registrar Marca
     @Test
+    @Tag("registrarMarca")
     public void registrarMarcaSinErrores() {
 
         try {
@@ -67,6 +70,7 @@ public class CasosDeUsoMarcasTests {
     }
 
     @Test
+    @Tag("registrarMarca")
     public void registrarMarcaConNombreRepetido() {
 
         try {

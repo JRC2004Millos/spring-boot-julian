@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -17,6 +18,7 @@ import com.ingesoft.logic.CasosDeUsoUsuarios;
 import com.ingesoft.logic.ExcepcionUsuarios;
 
 @SpringBootTest
+@Tag("integration")
 public class CasosDeUsoUsuariosTests {
 
     // SUT -- Subject under test
@@ -59,6 +61,7 @@ public class CasosDeUsoUsuariosTests {
 
     // Curso normal de eventos -- "caso feliz"
     @Test
+    @Tag("registrarUsuario")
     public void registrarUsuarioSinErrores() {
 
         try {
@@ -88,6 +91,7 @@ public class CasosDeUsoUsuariosTests {
     // Curso alternativo -- 
     // (2) Cuando existe otro usuario con ese login
     @Test
+    @Tag("registrarUsuario")
     public void registrarUsuarioConLoginQueYaExiste() {
 
         try {

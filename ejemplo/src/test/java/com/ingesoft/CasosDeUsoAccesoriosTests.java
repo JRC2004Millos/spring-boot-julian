@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,17 +17,15 @@ import com.ingesoft.logic.CasosDeUsoAccesorios;
 import com.ingesoft.logic.ExcepcionAccesorios;
 
 @SpringBootTest
+@Tag("integration")
 public class CasosDeUsoAccesoriosTests {
 
     @Autowired
     CasosDeUsoAccesorios casosDeUsoAccesorios;
 
-    // Clases adicionales necesarias para la prueba
     @Autowired
     RepositorioAccesorios accesorios;
 
-
-    // Arrange
     @BeforeAll
     public static void prepararAmbienteParaTodaLaSuite() {
         System.out.println("Antes de todas las pruebas de la clase");
@@ -45,39 +44,24 @@ public class CasosDeUsoAccesoriosTests {
         accesorios.save(accesorioExistente);
     }
 
-    // Registrar Accesorio
     @Test
+    @Tag("registrarAccesorio")
     public void registrarAccesorioSinErrores() {
-
         try {
-
-            // Arrange
-
-            // Act
             casosDeUsoAccesorios.registrarAccesorio("Timbre");
-
-            // Assert
             Accesorio nuevoAccesorio = accesorios.findByDescripcion("Timbre");
             assertThat(nuevoAccesorio).isNotNull();
-            
         } catch (ExcepcionAccesorios e) {
-
-            // Mal !!
             fail("Se generó un error y no debería", e);
         }
     }
 
     @Test
+    @Tag("registrarAccesorio")
+    @Tag("errorHandling")
     public void registrarAccesorioConDescripcionRepetida() {
-
         try {
-
-            // Arrange
-
-            // Act
             casosDeUsoAccesorios.registrarAccesorio("Luz LED");
-
-            // Assert
             fail("Dejó registrar otro accesorio con la misma descripción");
         } catch (ExcepcionAccesorios e) {
             // OK !!
